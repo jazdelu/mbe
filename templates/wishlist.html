@@ -9,11 +9,33 @@
 	<link rel="stylesheet" type="text/css" href="static/fa/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="static/vegas/vegas.min.css">
 	<title>index</title>
+  <style>
+    /**
+     * Grid items
+     */
+    .tiles-wrap{
+    	position: relative;
+    	margin: 10px 0px;
+    }
+    .tiles-wrap li {
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+    }
+    .tiles-wrap li img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+
+</head>
 </head>
 <body>
 <div id="wrap">
 <header>
-	<div class="navbar container ">
+	<div class="topbar">
+		<a href="register.html" class="right black-text">MY ACCOUNT</a>
+	</div>
+	<div class="navbar">
 		<ul class="nav-left">
 			<li><a href="lookbook.html">MBE</a></li>
 			<li><a href="lookbook.html">NEW BORN</a></li>
@@ -29,52 +51,86 @@
 </header>
 <main>
 	<div class="content container wishlist">
-		<h3 class="center-align text">Can you realize their dream?</h3>
-		<div class="row wall">
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook5.jpg" class="responsive-img" data = '"For Chiristmas Gift" &nbsp;&nbsp; By John'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook6.jpg" class="responsive-img" data = '"For New Year Gift" &nbsp;&nbsp; By Mary'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data = '"I want it" &nbsp;&nbsp; By Jason'>
-			</div>	
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook5.jpg" class="responsive-img" data = '"For Chiristmas Gift" &nbsp;&nbsp; By John'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook6.jpg" class="responsive-img" data = '"For New Year Gift" &nbsp;&nbsp; By Mary'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data = '"I want it" &nbsp;&nbsp; By Jason'>
-			</div>	
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook5.jpg" class="responsive-img" data = '"For Chiristmas Gift" &nbsp;&nbsp; By John'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook6.jpg" class="responsive-img" data = '"For New Year Gift" &nbsp;&nbsp; By Mary'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data = '"I want it" &nbsp;&nbsp; By Jason'>
-			</div>	
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook5.jpg" class="responsive-img" data = '"For Chiristmas Gift" &nbsp;&nbsp; By John'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook6.jpg" class="responsive-img" data = '"For New Year Gift" &nbsp;&nbsp; By Mary'>
-			</div>
-			<div class="col s2 wish">
-				<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data = '"I want it" &nbsp;&nbsp; By Jason'>
-			</div>						
-		</div>
 
+			<ul  class="tiles-wrap">
+		        <li class="tile">
+		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+	        		<ul>
+	        			<li><i class="fa fa-heart"></i></li>
+	        			<li>John,&nbsp;</li>
+	        			<li>Mary,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Stephanie</li>
+	        		</ul>
+		        </li>
+		        <li class="tile">
+		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+	        		<ul>
+	        			<li><i class="fa fa-heart"></i></li>
+	        			<li>John,&nbsp;</li>
+	        			<li>Mary,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Stephanie</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        		</ul>
+		        </li>
+		        <li class="tile">
+		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+	        		<ul>
+	        			<li><i class="fa fa-heart"></i></li>
+	        			<li>John,&nbsp;</li>
+	        			<li>Mary,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Stephanie</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        		</ul>
+		        </li>
+		        <li class="tile">
+		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+	        		<ul>
+	        			<li><i class="fa fa-heart"></i></li>
+	        			<li>John,&nbsp;</li>
+	        			<li>Mary,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Stephanie</li>
+	        			<li>Jason,&nbsp;</li>
+	        		</ul>
+		        </li>
+		        <li class="tile">
+		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+	        		<ul>
+	        			<li><i class="fa fa-heart"></i></li>
+	        			<li>John,&nbsp;</li>
+	        			<li>Mary,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Stephanie</li>
+	        		</ul>
+		        </li>
+		        <li class="tile">
+		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+	        		<ul>
+	        			<li><i class="fa fa-heart"></i></li>
+	        			<li>John,&nbsp;</li>
+	        			<li>Mary,&nbsp;</li>
+	        			<li>Jason,&nbsp;</li>
+	        			<li>Stephanie</li>
+	        		</ul>
+		        </li>
+			</ul>
 	</div>
 </main>
 </div>
 <footer>
 	<ul>
-		<li><a href="lookbook.html" class="black-text">MBE</a></li>
 		<li><a href="contact.html" class="black-text">CONTACT</a></li>
 		<li><a href="#" class="black-text">OUR COMMITMENTS</a></li>
 		<li><a href="#" class="black-text">GERNERAL CONDITIONS</a></li>
@@ -83,8 +139,24 @@
 </body>
 <script text = "text/javascript" src="static/mbe/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/materialize/js/materialize.min.js"></script>
-<script type="text/javascript">
- 	$(".wish>img").mouseover(function(){
- 		$(".text").html($(this).attr("data"));
- 	});
-</script>
+<script type="text/javascript" src="static/mbe/js/jquery.wookmark.min.js"></script>
+<script type="text/javascript" src="static/mbe/js/jquery.imagesloaded.js"></script>
+  <script type="text/javascript">
+    (function() {
+      function getWindowWidth() {
+        return Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+      }
+      // Instantiate wookmark after all images have been loaded
+      var wookmark;
+      imagesLoaded('.tiles-wrap', function() {
+        wookmark = new Wookmark('.tiles-wrap', {
+          itemWidth: 300, // Optional min width of a grid item
+          outerOffset: 20, // Optional the distance from grid to parent
+          flexibleWidth: function () {
+            // Return a maximum width depending on the viewport
+            return getWindowWidth() < 1024 ? '100%' : '50%';
+          }
+        });
+      });
+    })();
+  </script>
