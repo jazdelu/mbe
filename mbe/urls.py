@@ -31,4 +31,4 @@ urlpatterns = [
     url(r'^index/$',mbe_views.home, name = 'Home'),
     url(r'^collection/', page_views.get_collection_page, name = 'The Collection' ),
     url(r'^mbe/', page_views.get_about_page, name = 'About Us' ),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
