@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from django.conf.urls.static import static
+from django.conf import settings
+from member import urls as member_urls
+from collection import urls as collection_urls
+from page import views as page_views
+from mbe import views as mbe_views
+from wish import urls as wish_urls
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-]
+    url(r'^account/', include(member_urls)),
+    url(r'^wish/', include(wish_urls)),
+    url(r'^p/',include(collection_urls)),
+    url(r'^$', mbe_views.home, name = 'Home' ),
+    url(r'^index/$',mbe_views.home, name = 'Home'),
+    url(r'^collection/', page_views.get_collection_page, name = 'The Collection' ),
+    url(r'^mbe/', page_views.get_about_page, name = 'About Us' ),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

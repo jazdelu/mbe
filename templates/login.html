@@ -1,70 +1,44 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-	<meta charset= "utf-8">
-	<meta name="author" content="MBE & Jaz">
-	<meta name="description" content = "">
-	<link rel="stylesheet" type="text/css" href="static/materialize/css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="static/mbe/css/style.css">
-	<link rel="stylesheet" type="text/css" href="static/fa/css/font-awesome.min.css">
-	<title>index</title>
-</head>
-<body>
-<div id="wrap">
-<header>
-	<div class="topbar">
-		<a href="#" class="right black-text">MY ACCOUNT</a>
-	</div>
-	<div class="navbar">
-		<ul class="nav-left">
-			<li><a href="lookbook.html">MBE</a></li>
-			<li><a href="lookbook.html">NEW BORN</a></li>
-			<li><a href="product.html">GIRL</a></li>
-		</ul>
-		<a href="#" class="logo"><img src="static/mbe/images/logo.png"/ width="100px"></a>
-		<ul class="nav-right">
-			<li><a href="product.html">BOY</a></li>
-			<li><a href="product.html">ACCESSORIES</a></li>
-			<li><a href="wishlist.html">MAKE A WISH</a></li>
-		</ul>
-	</div>
-</header>
-<main>
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
 	<div class="content container login">
 		<div class="row">
 			<div class="col s3 offset-l1">
-				<img src="static/mbe/images/flower-big.png" class="responsive-img">
+				<img src="/static/mbe/images/flower-big.png" class="responsive-img">
 			</div>
 			<div class="col s6 offset-l1" >
-			   <form class="col s12" style="margin-top:100px;">
+			   <form class="col s12" style="margin-top:100px;" method="POST" action = "/account/login/">
+			   {% csrf_token %}
+			   	  {% if error %}
+			   	  <div class="row error">
+			   	  	{{ error }}
+			   	  </div>
+			   	  {% endif %}
 			      <div class="row">
 			        <div class="input-field col s12">
-			          <input id="username" type="text" class="validate">
-			          <label for="username">Username</label>
+			          <input id="id_username" type="text" class="validate" name = "username">
+			          <label for="id_username">Username</label>
 			        </div>
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
-			          <input id="password" type="password" class="validate">
-			          <label for="password">Password</label>
+			          <input id="id_password" type="password" class="validate" name = "password">
+			          <label for="id_password">Password</label>
 			        </div>
 			      </div>
-			      <div class="row right">
-			      	<a href="lookbook.html" class="btn btn-large btn-reverse">LOGIN</a>
+			      <div class="row panel">
+			      	<a class="new left" href="/account/register/">Create A New Account</a>
+			      	<input type = "submit" id = "submit" class="btn btn-large btn-reverse right" value ="submit"></>
 			      </div>
 			    </form>
 			</div>
 		</div>
 	</div>
-</main>
-</div>
-<footer>
-	<ul>
-		<li><a href="contact.html" class="black-text">CONTACT</a></li>
-		<li><a href="#" class="black-text">OUR COMMITMENTS</a></li>
-		<li><a href="#" class="black-text">GERNERAL CONDITIONS</a></li>
-	</ul>
-</footer>
-</body>
-<script text = "text/javascript" src="static/mbe/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/materialize/js/materialize.min.js"></script>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+	$("#submit").click(function(){
+		$("form").submit();
+	});
+</script>
+{% endblock %}

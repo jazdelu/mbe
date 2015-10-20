@@ -5,23 +5,22 @@ from django.contrib.auth.models import User
 
 
 class UserForm(forms.ModelForm):
-	password = forms.CharField(widget=forms.widget.PasswordInput,
+	password = forms.CharField(widget=forms.widgets.PasswordInput,
                                 label="Password")
-	cpassword = forms.CharField(widget=forms.widget.PasswordInput,
-                                label="Password (again)")
 
 	class Meta:
 		model = User
-		fields = ('username', 'email','password','cpassword')
+		fields = ('username', 'email','password')
 
 	def clean_username(self):
-		existing = User.objects.filter(username__iexact=self.cleaned__data['username'])
-		if existing.exist():
-			raise forms.ValidationError("This email address is already in use. Please supply a different email address.")
-		return self.cleaned_data['email']
+		existing = User.objects.filter(username__iexact=self.cleaned_data['username'])
+		if existing.exists():
+			raise forms.ValidationError("This username address is already in use. Please supply a different username.")
+		return self.cleaned_data['username']
 
 	def clean_email(self):
-		if User.objects.filter(email__iexact = self.cleaned_data['email']):
+		existing = User.objects.filter(email__iexact = self.cleaned_data['email'])
+		if existing.exists():
 			raise forms.ValidationError("This email address is already in use. Please supply a different email address.")
 		return self.cleaned_data['email']
 
@@ -34,12 +33,10 @@ class UserForm(forms.ModelForm):
 class MemberForm(forms.ModelForm):
 	class Meta:
 		model = Member
+		fields = ('kidsname', 'email1','address')
 
 
 class AuthenticationForm(forms.Form):
-    """
-    Login form
-    """
 	username = forms.CharField(widget=forms.widgets.TextInput)
 	password = forms.CharField(widget=forms.widgets.PasswordInput)
 

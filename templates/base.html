@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset= "utf-8">
+	<meta name="author" content="MBE & Jaz">
+	<meta name="description" content = "">
+	<link rel="stylesheet" type="text/css" href="/static/materialize/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/mbe/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/static/fa/css/font-awesome.min.css">
+	<title>{% block title %}{% endblock %}</title>
+{% block css %}
+{% endblock %}
+</head>
+<body>
+<div id="wrap">
+<header>
+	<div class="topbar">
+		<ul>
+		<li><a href="/account/profile/">MY ACCOUNT</a></li>
+		{% if request.user.is_authenticated %}
+		<li><a>|</a></li>
+		<li><a href="/account/logout/">LOGOUT</a>
+		{% endif %}
+		</ul>
+	</div>
+	<div class="navbar">
+		<ul class="nav-left">
+			<li><a href="/MBE/">MBE</a></li>
+			<li><a href="/p/newborn/">NEW BORN</a></li>
+			<li><a href="/p/girl/">GIRL</a></li>
+		</ul>
+		<a href="/" class="logo"><img src="/static/mbe/images/logo.png"/ width="100px"></a>
+		<ul class="nav-right">
+			<li><a href="/p/boy/">BOY</a></li>
+			<li><a href="/p/accessories/">ACCESSORIES</a></li>
+			<li><a href="/wish/">MAKE A WISH</a></li>
+		</ul>
+	</div>
+	{% block subnav %}
+	{% endblock %}
+</header>
+<main>
+	{% block content %}
+	{% endblock %}
+</main>
+</div>
+<footer>
+	<ul>
+		<li><a href="contact.html" class="black-text">CONTACT</a></li>
+		<li><a href="#" class="black-text">OUR COMMITMENTS</a></li>
+		<li><a href="#" class="black-text">GERNERAL CONDITIONS</a></li>
+	</ul>
+</footer>
+</body>
+<script text = "text/javascript" src="/static/mbe/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/materialize/js/materialize.min.js"></script>
+{% block js %}
+{% endblock %}

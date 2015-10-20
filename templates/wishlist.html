@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-	<meta charset= "utf-8">
-	<meta name="author" content="MBE & Jaz">
-	<meta name="description" content = "">
-	<link rel="stylesheet" type="text/css" href="static/materialize/css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="static/mbe/css/style.css">
-	<link rel="stylesheet" type="text/css" href="static/fa/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="static/vegas/vegas.min.css">
-	<title>index</title>
+{% extends "base.html" %}
+{% block title %}Wish Wall{% endblock %}
+{% block css %}
   <style>
     /**
      * Grid items
@@ -20,128 +12,39 @@
     .tiles-wrap>li {
       -moz-box-sizing: border-box;
            box-sizing: border-box;
-           border: 1px solid #ccc;
     }
     .tiles-wrap li img {
       width: 100%;
       height: auto;
     }
   </style>
-
-</head>
-</head>
-<body>
-<div id="wrap">
-<header>
-	<div class="topbar">
-		<a href="register.html" class="right black-text">MY ACCOUNT</a>
-	</div>
-	<div class="navbar">
-		<ul class="nav-left">
-			<li><a href="lookbook.html">MBE</a></li>
-			<li><a href="lookbook.html">NEW BORN</a></li>
-			<li><a href="product.html">GIRL</a></li>
-		</ul>
-		<a href="#" class="logo"><img src="static/mbe/images/logo.png" width="100px"></a>
-		<ul class="nav-right">
-			<li><a href="product.html">BOY</a></li>
-			<li><a href="product.html">ACCESSORIES</a></li>
-			<li><a href="wishlist.html">MAKE A WISH</a></li>
-		</ul>
-	</div>
-</header>
-<main>
+{% endblock %}
+{% block content %}
 	<div class="content container wishlist">
-
 			<ul  class="tiles-wrap">
+				{% for p in products %}
 		        <li class="tile">
-		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
+		        	{% if p.wishes.all %}
+		        	<a><img class="hoverable" src="{{ p.image1.url }}"></a>
 	        		<ul>
 	        			<li><i class="fa fa-heart"></i></li>
-	        			<li>John,&nbsp;</li>
-	        			<li>Mary,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Stephanie</li>
+	        			{% for w in p.wishes.all %}
+	        			{% if forloop.last %}
+	        			<li>{{ w.user.username }}</li>
+	        			{% else %}
+	        			<li>{{ w.user.username }},&nbsp;</li>
+	        			{% endif %}
+	        			{% endfor %}
 	        		</ul>
+	        		{% endif %}
 		        </li>
-		        <li class="tile">
-		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
-	        		<ul>
-	        			<li><i class="fa fa-heart"></i></li>
-	        			<li>John,&nbsp;</li>
-	        			<li>Mary,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Stephanie</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        		</ul>
-		        </li>
-		        <li class="tile">
-		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
-	        		<ul>
-	        			<li><i class="fa fa-heart"></i></li>
-	        			<li>John,&nbsp;</li>
-	        			<li>Mary,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Stephanie</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        		</ul>
-		        </li>
-		        <li class="tile">
-		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
-	        		<ul>
-	        			<li><i class="fa fa-heart"></i></li>
-	        			<li>John,&nbsp;</li>
-	        			<li>Mary,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Stephanie</li>
-	        			<li>Jason,&nbsp;</li>
-	        		</ul>
-		        </li>
-		        <li class="tile">
-		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
-	        		<ul>
-	        			<li><i class="fa fa-heart"></i></li>
-	        			<li>John,&nbsp;</li>
-	        			<li>Mary,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Stephanie</li>
-	        		</ul>
-		        </li>
-		        <li class="tile">
-		        	<a href="product.html" target="_blank"><img class="hoverable" src="static/mbe/images/lookbook7.jpg"></a>
-	        		<ul>
-	        			<li><i class="fa fa-heart"></i></li>
-	        			<li>John,&nbsp;</li>
-	        			<li>Mary,&nbsp;</li>
-	        			<li>Jason,&nbsp;</li>
-	        			<li>Stephanie</li>
-	        		</ul>
-		        </li>
+		        {% endfor %}
 			</ul>
 	</div>
-</main>
-</div>
-<footer>
-	<ul>
-		<li><a href="contact.html" class="black-text">CONTACT</a></li>
-		<li><a href="#" class="black-text">OUR COMMITMENTS</a></li>
-		<li><a href="#" class="black-text">GERNERAL CONDITIONS</a></li>
-	</ul>
-</footer>
-</body>
-<script text = "text/javascript" src="static/mbe/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/materialize/js/materialize.min.js"></script>
-<script type="text/javascript" src="static/mbe/js/jquery.wookmark.min.js"></script>
-<script type="text/javascript" src="static/mbe/js/jquery.imagesloaded.js"></script>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/static/mbe/js/jquery.wookmark.min.js"></script>
+<script type="text/javascript" src="/static/mbe/js/jquery.imagesloaded.js"></script>
   <script type="text/javascript">
     (function() {
       function getWindowWidth() {
@@ -161,3 +64,4 @@
       });
     })();
   </script>
+{% endblock %}

@@ -1,177 +1,81 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-	<meta charset= "utf-8">
-	<meta name="author" content="MBE & Jaz">
-	<meta name="description" content = "">
-	<link rel="stylesheet" type="text/css" href="static/materialize/css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="static/mbe/css/style.css">
-	<link rel="stylesheet" type="text/css" href="static/fa/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="static/vegas/vegas.min.css">
-	<title>index</title>
-</head>
-<body>
-<div id="wrap">
-<header>
-	<div class="topbar">
-		<a href="register.html" class="right black-text">MY ACCOUNT</a>
-	</div>
-	<div class="navbar">
-		<ul class="nav-left">
-			<li><a href="lookbook.html">MBE</a></li>
-			<li><a href="lookbook.html">NEW BORN</a></li>
-			<li><a href="product.html">GIRL</a></li>
-		</ul>
-		<a href="#" class="logo"><img src="static/mbe/images/logo.png"/ width="100px"></a>
-		<ul class="nav-right">
-			<li><a href="product.html">BOY</a></li>
-			<li><a href="product.html">ACCESSORIES</a></li>
-			<li><a href="wishlist.html">MAKE A WISH</a></li>
-		</ul>
-	</div>
+{% extends "base.html" %}
+{% block title %}
+{{ category.name }}
+{% if subcategory %}
+|{{ subcategory.name }}
+{% endif %}
+{% endblock %}
+{% block subnav %}
 	<div class="sub-nav">
 		<ul>
-			<li><a href="product.html">Trousers</a></li>
-			<li><a href="product.html">Coats</a></li>
-			<li><a href="product.html">Jackets</a></li>
-			<li><a href="product.html">Jumpers</a></li>
-			<li><a href="product.html">Shirts</a></li>
-			<li><a href="product.html">Twin Sets</a></li>
-			<li><a href="product.html">Accessories</a></li>
-			<li><a href="product.html">Rampers</a></li>
+			{% for c in category.subs.all %}
+			<li><a href="/p/{{ category.slug }}/{{ c.slug }}/">{{ c.name }}</a></li>
+			{% endfor %}
 		</ul>
 	</div>
-</header>
-<main>
+{% endblock %}
+{% block content %}
 	<div class="content container product">
 		<div class="row">
 			<div class="col s12 cover">
-				<img src="static/mbe/images/cover.png" class="responsive-img">
-				<div class="col s6 title">
-					<div class="row">
-					<h3 class="col s12">BOYS</h3>
-					<p class="col s12">	You're seeing this message because you have DEBUG = True in your Django settings file and you haven't configured any URLs. Get to work!</p>
-					</div>
-				</div>
+				<img src="{{ category.cover.url }}" class="responsive-img">
 			</div>
 		</div>
 		<div class="row">
+			<div class="col s6">
+				<div class="cate">
+					<h3>{{ category.page_title }}</h3>
+					<p>{{ category.description }}</p>
+				</div>
+			</div>
+			<div class="col s6">
+				<img src = "{{ category.image.url }}" class="responsive-img">
+			</div>
+			{% for p in products %}
 			<div class="col s6 p">
 				<div class="cover">
-					<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data="static/mbe/images/lookbook6.jpg">
+					<img src="{{ p.image1.url }}" class="responsive-img" data="{{ p.image2.url }}">
 				</div>
+				{% if p.wishes.all.count != 0 %}
 				<div class="col s12 tip">
-					<span>Jason</span> and <a href="wishlist.html">33</a> friends add this product to wishlist
+					{% if request.user.is_authenticated and request.user in users %}
+					You and&nbsp;<a href="/wish/">{{ p.wishes.all.count }}</a> &nbsp;friends add this product to wishlist
+					{% else %}
+					<a href="/wish/">{{ p.wishes.all.count }}</a> &nbsp;friends add this product to wishlist
+					{% endif %}
 				</div>
+				{% else %}
+				<div class="col s12 tip">
+				    Click the flower to add this product to wishlist.
+				</div>
+				{% endif %}
 				<div class="row panel">
 					<div class="col s10 text">
 						<span class="col s8 ">
-							Product 1
+							{{ p.name }}
 						</span>
 						<span class="col s4 ">
-							¥199
+							¥{{ p.price }}
 						</span>
-						<span class="col s12 ">
-	You're seeing this message because you have DEBUG = True in your Django settings file and you haven't configured any URLs. Get to work!
+						<span class="col s12  valign-wrapper" style="min-height:75px;">
+						{{ p.short_description }}
 						</span>
 					</div>
 					<div class="col s2 like">
-						<a href="javascript:void(0)" class="valign-wrapper"><img src="static/mbe/images/flower.png" class="responsive-img"  /></a>
+					{% if request.user.is_authenticated and request.user in p.get_wished_users %}
+						<a href="/wish/remove/?pid={{ p.id }}&next={{ request.get_full_path }}" class="valign-wrapper"><img src="/static/mbe/images/flower.png" class="responsive-img"  /></a>						
+					{% else %}
+						<a href="/wish/add/?pid={{ p.id }}&next={{ request.get_full_path }}" class="valign-wrapper"><img src="/static/mbe/images/flower.png" class="responsive-img"  /></a>
+					{% endif %}
 					</div>	
 				</div>
 			</div>
-			<div class="col s6 p">
-				<div class="cover">
-					<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data="static/mbe/images/lookbook6.jpg">
-				</div>
-				<div class="col s12 tip">
-					<span>Stephanie</span> and <a href="wishlist.html">33</a> friends add this product to wishlist
-				</div>
-				<div class="row panel">
-					<div class="col s10 text">
-						<span class="col s8 ">
-							Product 1
-						</span>
-						<span class="col s4 ">
-							¥199
-						</span>
-						<span class="col s12 ">
-	You're seeing this message because you have DEBUG = True in your Django settings file and you haven't configured any URLs. Get to work!
-						</span>
-					</div>
-					<div class="col s2 like">
-						<a href="javascript:void(0)" class="valign-wrapper"><img src="static/mbe/images/flower.png" class="responsive-img"  /></a>
-					</div>	
-				</div>
-			</div>
-			<div class="col s6 p">
-				<div class="cover">
-					<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data="static/mbe/images/lookbook6.jpg">
-				</div>
-				<div class="col s12 tip">
-					<span>Mary</span> and <a href="wishlist.html">33</a> friends add this product to wishlist
-				</div>
-				<div class="row panel">
-					<div class="col s10 text">
-						<span class="col s8 ">
-							Product 1
-						</span>
-						<span class="col s4 ">
-							¥199
-						</span>
-						<span class="col s12 ">
-	You're seeing this message because you have DEBUG = True in your Django settings file and you haven't configured any URLs. Get to work!
-						</span>
-					</div>
-					<div class="col s2 like">
-						<a href="javascript:void(0)" class="valign-wrapper"><img src="static/mbe/images/flower.png" class="responsive-img"  /></a>
-					</div>
-				</div>
-			</div>
-			<div class="col s6 p">
-				<div class="cover">
-					<img src="static/mbe/images/lookbook7.jpg" class="responsive-img" data="static/mbe/images/lookbook6.jpg">
-				</div>
-				<div class="col s12 tip">
-					<span>John</span> and <a href="wishlist.html">33</a> friends add this product to wishlist
-				</div>
-				<div class="row panel">
-					<div class="col s10 text">
-						<span class="col s8 ">
-							Product 1
-						</span>
-						<span class="col s4 ">
-							¥199
-						</span>
-						<span class="col s12 ">
-	You're seeing this message because you have DEBUG = True in your Django settings file and you haven't configured any URLs. Get to work!
-						</span>
-					</div>
-					<div class="col s2 like">
-						<a href="javascript:void(0)" class="valign-wrapper"><img src="static/mbe/images/flower.png" class="responsive-img"  /></a>
-					</div>	
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
-</main>
-</div>
-<footer>
-	<ul>
-		<li><a href="contact.html" class="black-text">CONTACT</a></li>
-		<li><a href="#" class="black-text">OUR COMMITMENTS</a></li>
-		<li><a href="#" class="black-text">GERNERAL CONDITIONS</a></li>
-	</ul>
-</footer>
-</body>
-<script text = "text/javascript" src="static/mbe/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/materialize/js/materialize.min.js"></script>
+{% endblock %}
+{% block js %}
 <script type="text/javascript">
-	$(".eye").mouseover(function(){
-		$(this).parents("div.p").find("div.overlay").fadeIn(300);
-	}).mouseleave(function(){
-		$(this).parents("div.p").find("div.overlay").fadeOut(300);		
-	});
 	$(".cover").mouseover(function(){
 		var src = $(this).find("img").attr("src");
 		var data = $(this).find("img").attr("data");
@@ -189,3 +93,4 @@
     	$(this).parents('.p').children('.tip').children('span').text('You');
     });
   });</script>
+  {% endblock %}

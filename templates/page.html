@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{{ page.name }}{% endblock %}
+{% block content %}
+	<div class="content container lookbook">
+		<div class="cover">
+			<h2>{{ page.name }}</h2>
+			<img src="{{ page.cover.url }}" class="responsive-img">
+		</div>
+		<div class="row">
+			<div class="col s6 col-left">
+				{% for s in left_sections %}
+					{% if s.stype == 'text' %}
+					<div class="col-text">
+						<h3>{{ s.title }}</h3>
+						<p>{{ s.content }}</p>
+					</div>
+					{% else %}
+					<figure class="col-image">
+						<img src="{{ s.image.url }}" class="responsive-img" />
+					</figure>				
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="col s6 col-right">
+				{% for s in right_sections %}
+					{% if s.stype == 'text' %}
+					<div class="col-text">
+						<h3>{{ s.title }}</h3>
+						<p>{{ s.content }}</p>
+					</div>
+					{% else %}
+					<figure class="col-image">
+						<img src="{{ s.image.url }}" class="responsive-img" />
+					</figure>				
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

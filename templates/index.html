@@ -14,18 +14,24 @@
 <div id = "wrap">
 <header>
 	<div class="topbar">
-		<a href="register.html" class="right white-text">MY ACCOUNT</a>
+		<ul>
+		<li><a href="/account/profile/" class="white-text">MY ACCOUNT</a></li>
+		{% if request.user.is_authenticated %}
+		<li><a>|</a></li>
+		<li><a href="/account/logout/" class="white-text">LOGOUT</a>
+		{% endif %}
+		</ul>
 	</div>
 	<div class="navbar container ">
-		<a href="index.html" class="logo"><img src="static/mbe/images/logo-white.png" class="responsive-img"></a>
+		<a href="index.html" class="logo"><img src="static/mbe/images/logo-white.png" class="responsive-img" width="150px;"></a>
 	</div>
 </header>
 <main>
 	<div class="index container">
-		<h1 class="main_title">
+		<h2 class="main_title">
 			FALL WINTER COLLECTION
-		</h1>
-		<a href="lookbook.html" class="btn-large btn">Discover</a>
+		</h2>
+		<a href="/collection/" class="btn-large btn">Discover</a>
 	</div>
 </main>
 </div>
@@ -43,7 +49,7 @@
 <script type="text/javascript">
 	$("body").vegas({
     slides: [
-        { src: "static/mbe/images/bg1.jpg" },
+        { src: "{{ c.background.url }}" },
     ]
 });
 </script>

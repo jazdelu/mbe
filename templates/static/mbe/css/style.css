@@ -104,7 +104,7 @@ input[type=text].valid, input[type=text]:focus.valid, input[type=password].valid
 
 /*----------Global Setting-----------*/
 h1, h2, h3, h4, h5, h6{
-	font-family: "Kalam","Helvitica-Neue","SimHei";
+	font-family: "Sorts Mill Goudy","Helvitica-Neue","SimHei";
 	font-weight: normal;
 }
 
@@ -160,16 +160,27 @@ b{
 	padding:0;
 	margin: 0;
 }
-.topbar>a{
+.topbar>ul{
+	position: relative;
+}
+.topbar>ul>li{
+	display: inline-block;
+	padding: 0px 10px;
+}
+.topbar>ul>li:last-child{
+	padding-right: 32px;
+	vertical-align: middle;
+}
+.topbar>ul>li>a{
+	display: block;
 	height: 64px;
-	display:inline-block;
 	text-align: center;
-	vertical-align: top;
 	line-height: 64px;
 	text-align: center;
-	padding-right: 32px;
+	color: #333;
+	font-size: 12px;
 }
-.topbar>a:hover{
+.topbar>ul>li>a:hover{
 	text-decoration: underline;
 }
 .topbar>ul{
@@ -196,7 +207,7 @@ b{
 .navbar>ul>li>a{
 	display: block;
 	padding: 0 2px 6px;
-	font-family: "Kalam","Helvitica-Neue","SimHei";
+	font-family: "Sorts Mill Goudy","Helvitica-Neue","SimHei";
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	color: #000;
@@ -251,13 +262,12 @@ b{
 	width: 75%;
 	margin:0 auto;
 	padding: 0;
-	margin-top: 180px;
+	margin-top: 64px;
 	text-align: center;
 }
 .index > .main_title{
-	font-size: 48px;
 	color: #fff;
-	margin-bottom: 16px;
+	margin-bottom: 64px;
 }
 .content{
 	margin-top: 36px;
@@ -265,8 +275,8 @@ b{
 .btn{
 	background-color: transparent;
 	color: #fff;
-	margin-top: 64px;
 	border:1px solid #fff;
+	text-transform: capitalize;
 }
 .btn:hover{
 	background-color: #E2BF00;
@@ -323,12 +333,13 @@ footer>ul>li>a:hover{
 	color: #fff;
 }
 /*----------Lookbook-----------*/
-.lookbook > .cover >h1{
+.lookbook > .cover >h2{
 	margin-top:32px;
 	margin-bottom: 32px;
-	font-size: 48px;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	text-align: center;
+	letter-spacing: 2px;
+	font-style: italic;
 }
 .lookbook .col-text, .lookbook .col-image{
 	margin-top: 20px;
@@ -343,6 +354,17 @@ footer>ul>li>a:hover{
 	text-align: left;
 }
 /*----------product-----------*/
+.product col:first-child{
+	height: 100%;
+}
+.product .cate{
+	margin-top: 160px;
+}
+.product .cate>h3{
+	font-style: italic;
+	margin-bottom: 32px;
+}
+
 
 .product .p{
 	position: relative;
@@ -428,4 +450,32 @@ footer>ul>li>a:hover{
 .register .text{
 	padding-left: 35px;
 }
+.register .errorlist{
+	font-size: 12px;
+}
+.register .errorlist>li{
+	color:red;
+	padding-left: 15px;
+}
+/*----------login-----------*/
 
+.login a.new{
+	color: #333;
+	padding-left: 10px;
+	font-size: 12px;
+	vertical-align: bottom;
+	height: 54px;
+	line-height: 52px;
+}
+.login a.new:hover{
+	color: #E2BF00
+
+}
+.login .panel{
+	margin-top: 64px;
+}
+.login .error{
+	font-size: 12px;
+	color:red;
+	padding-left: 10px;
+}
