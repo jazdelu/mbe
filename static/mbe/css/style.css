@@ -268,6 +268,9 @@ b{
 .index > .main_title{
 	color: #fff;
 	margin-bottom: 64px;
+	text-transform: uppercase;
+	letter-spacing: 6px;
+	font-weight: bold;
 }
 .content{
 	margin-top: 36px;
@@ -345,7 +348,18 @@ footer>ul>li>a:hover{
 	margin-top: 20px;
 }
 .lookbook .col-text{
-	padding: 30px 130px 0 30px;
+	overflow: hidden;
+	padding: 30px 30px 0 30px;
+	text-align: justify;
+	text-align-last:justify;
+	-moz-text-align-last:justify;
+}
+.lookbook .col-text:after{
+	display: inline-block;
+	content: '';
+	overflow: hidden;
+	width: 100%;
+	height: 0;
 }
 .lookbook .col-left .col-image{
 	text-align: right;
@@ -364,37 +378,41 @@ footer>ul>li>a:hover{
 	font-style: italic;
 	margin-bottom: 32px;
 }
-
-
-.product .p{
+.product .cate>p{
 	position: relative;
-	padding:0 0.75rem;
+	padding-right:30px;
+	text-align: justify;
+	text-align-last:justify;
+	-moz-text-align-last:justify;
+}
+.product .cate>p:after{
+	display: inline-block;
+	content: '';
+	overflow: hidden;
+	width: 100%;
+	height: 0;	
 }
 .product .panel{
 	min-height: 64px;
 }
-.product .panel>.text{
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-right: 30px;
+.product .panel>.text>span{
+	text-align: center;
 }
-.product .panel .like{
+.product  .like{
 	min-height: 64px;
-	padding-top: 30px;
+	padding-top: 5px;
 	padding-left: 10px;
 }
 .product .tip{
-	border-bottom: 1px solid #ccc;
 	color: #333;
-	padding: 10px 10px;
 }
 .product .tip>a{
 	display: inline;
-	text-decoration: underline;
 	color: #E2BF00;
 }
 .product .tip>a:hover{
 	color:#333;
+	text-decoration: underline;
 }
 .product .cover{
 	position: relative;
