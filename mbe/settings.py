@@ -106,6 +106,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+EMAIL_HOST = 'smtp.exmail.qq.com'
+EMAIL_HOST_USER = 'robot@minibobi.com'
+EMAIL_HOST_PASSWORD = 'lushizhao1129'
+DEFAULT_FROM_EMAIL = 'robot@minibobi.com'
+SERVER_EMAIL = 'robot@minibobi.com'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

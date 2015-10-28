@@ -36,38 +36,40 @@
 				<div class="cover">
 					<img src="{{ p.image1.url }}" class="responsive-img" data="{{ p.image2.url }}">
 				</div>
-				{% if p.wishes.all.count != 0 %}
-				<div class="col s12 tip">
-					{% if request.user.is_authenticated and request.user in users %}
-					You and&nbsp;<a href="/wish/">{{ p.wishes.all.count }}</a> &nbsp;friends add this product to wishlist
+				<div class='row'>
+				<div class="panel col s10">
+					{% if p.wishes.all.count != 0 %}
+					<div class="col s12 tip">
+						{% if request.user.is_authenticated and request.user in users %}
+						Wished by you and&nbsp;<a href="/wish/">{{ p.wishes.all.count }}</a> &nbsp;friends 
+						{% else %}
+						Wished by &nbsp;<a href="/wish/">{{ p.wishes.all.count }}</a> &nbsp;friends
+						{% endif %}
+					</div>
 					{% else %}
-					<a href="/wish/">{{ p.wishes.all.count }}</a> &nbsp;friends add this product to wishlist
+					<div class="col s12 tip">
+					    Click the flower to make the wish come true
+					</div>
 					{% endif %}
-				</div>
-				{% else %}
-				<div class="col s12 tip">
-				    Click the flower to add this product to wishlist.
-				</div>
-				{% endif %}
-				<div class="row panel">
-					<div class="col s10 text">
-						<span class="col s8 ">
+					<div class="col s12 text">
+						<span class="col s12 ">
 							{{ p.name }}
 						</span>
-						<span class="col s4 ">
-							¥{{ p.price }}
-						</span>
-						<span class="col s12  valign-wrapper" style="min-height:75px;">
+						<span class="col s12 ">
 						{{ p.short_description }}
 						</span>
+						<span class="col s12 ">
+							¥{{ p.price }}
+						</span>
 					</div>
-					<div class="col s2 like">
-					{% if request.user.is_authenticated and request.user in p.get_wished_users %}
-						<a href="/wish/remove/?pid={{ p.id }}&next={{ request.get_full_path }}" class="valign-wrapper"><img src="/static/mbe/images/flower.png" class="responsive-img"  /></a>						
-					{% else %}
-						<a href="/wish/add/?pid={{ p.id }}&next={{ request.get_full_path }}" class="valign-wrapper"><img src="/static/mbe/images/flower.png" class="responsive-img"  /></a>
-					{% endif %}
-					</div>	
+				</div>
+				<div class="col s2 like">
+				{% if request.user.is_authenticated and request.user in p.get_wished_users %}
+					<a href="/wish/remove/?pid={{ p.id }}&next={{ request.get_full_path }}" class="valign-wrapper"><img src="/static/mbe/images/flower.png" class="responsive-img"  /></a>						
+				{% else %}
+					<a href="/wish/add/?pid={{ p.id }}&next={{ request.get_full_path }}" class="valign-wrapper"><img src="/static/mbe/images/flower.png" class="responsive-img"  /></a>
+				{% endif %}
+				</div>	
 				</div>
 			</div>
 			{% endfor %}

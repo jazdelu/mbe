@@ -4,6 +4,9 @@ from collection.models import Collection
 PAGE_TYPE_CHOICES = [
 	('about','about'),
 	('collection','collection'),
+	('commitments','commitments'),
+	('conditions','conditions'),
+	('contact','contact'),
 ]
 SECTION_TYPE_CHOICES = [
 	('image','image'),
@@ -18,7 +21,7 @@ class Page(models.Model):
 	name = models.CharField(max_length = 128, verbose_name = 'Name')
 	ptype = models.CharField(max_length = 128, verbose_name = 'Page Type',choices = PAGE_TYPE_CHOICES)
 	cover = models.ImageField(upload_to = 'page/',verbose_name = 'Cover')
-	collection = models.ForeignKey(Collection, verbose_name = 'Collection', blank = True, null = True,help_text = 'Leave it to blank when the page type is ABOUT')
+	collection = models.ForeignKey(Collection, verbose_name = 'Collection', blank = True, null = True,help_text = 'Leave it to blank when the page type is not COLLECTION')
 
 	class Meta:
 		verbose_name = 'Page'
@@ -26,10 +29,10 @@ class Page(models.Model):
 
 	def __unicode__(self):
 		s = ''
-		if self.ptype == 'about':
-			s = self.name
-		else:
+		if self.ptype == 'collection':
 			s = self.name + '--'+ self.collection.name
+		else:
+			s = self.name
 		return s
 
 class Section(models.Model):
