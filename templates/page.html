@@ -12,7 +12,7 @@
 					{% if s.stype == 'text' %}
 					<div class="col-text">
 						<h3>{{ s.title }}</h3>
-						<p>{{ s.content }}</p>
+						<p>{{ s.content|linebreaksbr }}</p>
 					</div>
 					{% else %}
 					<figure class="col-image">
@@ -26,7 +26,7 @@
 					{% if s.stype == 'text' %}
 					<div class="col-text">
 						<h3>{{ s.title }}</h3>
-						<p>{{ s.content }}</p>
+						<p>{{ s.content|linebreaksbr }}</p>
 					</div>
 					{% else %}
 					<figure class="col-image">

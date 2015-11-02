@@ -394,13 +394,13 @@ footer>ul>li>a:hover{
 }
 .product .panel{
 	min-height: 64px;
+
 }
 .product .panel>.text>span{
 	text-align: center;
 }
 .product  .like{
 	min-height: 64px;
-	padding-top: 5px;
 	padding-left: 10px;
 }
 .product .tip{
