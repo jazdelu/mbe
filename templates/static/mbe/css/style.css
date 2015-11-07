@@ -371,9 +371,7 @@ footer>ul>li>a:hover{
 .product col:first-child{
 	height: 100%;
 }
-.product .cate{
-	margin-top: 160px;
-}
+
 .product .cate>h3{
 	font-style: italic;
 	margin-bottom: 32px;
@@ -392,9 +390,10 @@ footer>ul>li>a:hover{
 	width: 100%;
 	height: 0;	
 }
+
 .product .panel{
 	min-height: 64px;
-
+	padding: 0px;
 }
 .product .panel>.text>span{
 	text-align: center;
@@ -405,6 +404,8 @@ footer>ul>li>a:hover{
 }
 .product .tip{
 	color: #333;
+	padding: 0px;
+	font-size: 13px;
 }
 .product .tip>a{
 	display: inline;
