@@ -3,37 +3,55 @@
 {% block content %}
 <main>
 	<div class="content container contact">
-		<div class="col s8 offset-l2 cover">
+		<div class="col s12 cover">
 			<img src="{{ page.cover.url }}" class="responsive-img">
 		</div>
-		<h3 class="center-align text">CONTACT US</h3>
+		<h4 class="text">CONTACTS</h4>
+		<h6>YOUR MESSAGE</h6>
 		  <div class="row">
-		    <form class="col s8 offset-l2" method = "POST" action = "/contact/">
+		    <form class="col s12" method = "POST" action = "/contact/">
 		    {% csrf_token %}
 		      <div class="row">
-		        <div class="input-field col s12">
+		        <div class="input-field col s6">
+		          <div class="label">FIRST NAME</div>
+		          <input id="id_firstname" name = 'firstname' type="text" class="validate">
+		        </div>
+		        <div class="input-field col s6">
+		          <div class="label">LAST NAME</div>
+		          <input id="id_lastname" name = 'lastname' type="text" class="validate">
+		        </div>
+		      </div>
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <div class="label">PHONE NUMBER</div>
+		          <input id="id_phone" type="tel" name = 'phone' class="validate">
+		        </div>
+		        <div class="input-field col s6">
+		          <div class="label">E-MAIL ADDRESS*</div>
+		          <input id="id_email" type="email" name = 'email' class="validate">
+		        </div>
+		      </div>
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <div class="label">SUBJECT*</div>
 		          <input id="id_subject" name = 'subject' type="text" class="validate">
-		          <label for="id_subject">Subject</label>
 		        </div>
 		      </div>
 
-		      <div class="row">
-		        <div class="input-field col s12">
-		          <input id="id_email" type="email" name = 'email' class="validate">
-		          <label for="id_email">Email</label>
-		        </div>
-		      </div>
 				<div class="row">
 				<div class="input-field col s12">
-				  <textarea id="id_textarea1" name = 'content' class="materialize-textarea"></textarea>
-				  <label for="id_textarea1">Content</label>
+				  <div class="label">MESSAGE*</div>
+				  <textarea id="id_textarea1" name = 'content' class="materialize-textarea validate"></textarea>
 				</div>
 				</div>
 		      <div class="row right">
 			      	<input type = "submit" id = "submit" class="btn btn-large btn-reverse right" value ="submit" />
 		      </div>
 		    </form>
-		  </div
+		  </div>
+		  <div class="row">
+		  	<p class="col s12 tip">ANY QUESTIONS? Contact our <span style="color:#E2BF00;">CUSTOMER SERVICE</span> T. +86 15921773989</p>
+		  </div>
 	</div>
 </main>
 </div>

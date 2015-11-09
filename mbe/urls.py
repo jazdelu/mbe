@@ -32,4 +32,6 @@ urlpatterns = [
     url(r'^collection/', page_views.get_collection_page, name = 'The Collection' ),
     url(r'^mbe/', page_views.get_about_page, name = 'About Us' ),
     url(r'^contact/', mbe_views.contact, name = 'Contact Us' ),
+    url(r'^commitments/', mbe_views.commitments, name = 'Our Commitments' ),
+    url(r'^conditions/', mbe_views.conditions, name = 'General Conditions' ),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
