@@ -29,7 +29,7 @@ def contact(request):
 		text_content += 'Email: '+email+'<br/>'
 		text_content += 'Subject: '+subject+'<br/>'
 		text_content += 'Content: '+content+'<br/>'
-		msg = EmailMessage(subject, text_content, from_email, ['lushizhao@qq.com',])
+		msg = EmailMessage(subject, text_content, from_email, ['lushizhao@qq.com','stephanielannes@hotmail.com'])
 		msg.content_subtype = 'html'
 		msg.send()
 
