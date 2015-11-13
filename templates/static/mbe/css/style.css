@@ -105,6 +105,11 @@ input[type=text].validate, input[type=text]:focus.validate, input[type=password]
 textarea.materialize-textarea{
 	min-height: 5rem;
 }
+form .label{
+	font-size: 14px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
 
 /*----------Global Setting-----------*/
 h1, h2, h3, h4, h5, h6{
@@ -460,10 +465,6 @@ footer>ul>li>a:hover{
 	padding: 0 1.5rem;
 	letter-spacing:2px;
 
-}
-.contact form .label{
-	font-size: 14px;
-	letter-spacing: 2px;
 }
 .contact form .btn-group{
 	text-align: right;

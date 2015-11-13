@@ -11,44 +11,43 @@
 			      {% csrf_token %}
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label" >Username</div>
 			          <input disabled id="id_username" name = "username" type="text" class="validate" value = "{{ user.username }}">
-			    
-			          <label for="id_username" >Username</label>
 			        </div>
 			        	{{ user_form.username.errors }}
 			        
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label" >Password</div>
 			          <input id="id_password" name = "password" type="password" class="validate">
-			          <label for="id_password">Password</label>			         
 			        </div>
 			         {{ user_form.password.errors }}
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label" >E-mail</div> 
 			          <input id="id_email" type="email" name = "email" class="validate" value = "{{ user.email }}">
-			          <label for="id_email" >Email</label>
 			        </div>
 			        {{ user_form.email.errors }}
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label" >Kidsname</div>
 			          <input id="id_kidsname" type="text" name = "kidsname" class="validate" value = "{{ member.kidsname }}">
-			          <label for="id_kidsname">Kidsname</label>
 			        </div>
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label" >Friend's E-mail</div>
 			          <input id="id_email1" type="email" name = "email1" class="validate" placeholder = 'Let your friends make your wish come true' value = "{{ member.email1 }}">
-			          <label for="id_email1">Friend's Email</label>
 			        </div>
 			        {{ member_form.email1.errors }}
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label" >Address</div>
 			          <textarea id="id_address" name = "address" class="materialize-textarea" >{{ member.address }}</textarea>
-			          <label for="id_address">Address</label>
 			        </div>
 			      </div>
 			      <div class="row right">

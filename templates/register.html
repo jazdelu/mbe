@@ -12,44 +12,43 @@
 			      {% csrf_token %}
 			      <div class="row">
 			        <div class="input-field col s12">
+			          <div class="label">USERNAME</div>
 			          <input id="id_username" name = "username" type="text" class="validate">
-			          <label for="id_username" >Username</label>
 			        </div>
 			        	{{ user_form.username.errors }}
 			        
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
-			          <input id="id_password" name = "password" type="password" class="validate">
-			          <label for="id_password">Password</label>
-			         
+			        <div class="label">PASSWORD</div>
+			          <input id="id_password" name = "password" type="password" class="validate">         
 			        </div>
 			         {{ user_form.password.errors }}
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			        <div class="label">E-MAIL</div>
 			          <input id="id_email" type="email" name = "email" class="validate">
-			          <label for="id_email" >Email</label>
 			        </div>
 			        {{ user_form.email.errors }}
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			        <div class="label">KIDSNAME</div>
 			          <input id="id_kidsname" type="text" name = "kidsname" class="validate">
-			          <label for="id_kidsname">Kidsname</label>
 			        </div>
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			        <div class="label">FRIEND'S E-MAIL</div>
 			          <input id="id_email1" type="email" name = "email1" class="validate" placeholder = 'Let your friends make your wish come true'>
-			          <label for="id_email1">Friend's Email</label>
 			        </div>
 			        {{ member_form.email1.errors }}
 			      </div>
 			      <div class="row">
 			        <div class="input-field col s12">
+			        <div class="label">ADDRESS</div>
 			          <textarea id="id_address" name = "address" class="materialize-textarea"></textarea>
-			          <label for="id_address">Address</label>
 			        </div>
 			      </div>
 			      <div class="row right">
