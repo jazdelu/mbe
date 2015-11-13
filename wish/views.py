@@ -1,8 +1,9 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from wish.models import Wish
 from collection.models import Product, Collection
+from page.models import Page
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -42,4 +43,9 @@ def remove(request):
 
 def get_wishes_by_product(request):
 	products = Product.objects.all().order_by('-last_liked')
-	return render_to_response('wishlist.html', { 'products':products }, context_instance=RequestContext(request))
+	page = ''
+	try:
+		page = Page.objects.get(ptype = 'wishlist')
+	except:
+		raise Http404
+	return render_to_response('wishlist.html', { 'products':products, 'page':page }, context_instance=RequestContext(request))

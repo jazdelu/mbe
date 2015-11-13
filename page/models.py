@@ -7,6 +7,7 @@ PAGE_TYPE_CHOICES = [
 	('commitments','commitments'),
 	('conditions','conditions'),
 	('contact','contact'),
+	('wishlist','wishlist'),
 ]
 SECTION_TYPE_CHOICES = [
 	('image','image'),
