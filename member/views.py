@@ -5,11 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from member.forms import UserForm, MemberForm, AuthenticationForm
 from member.models import Member
-from django.http import HttpResponseRedirect, HttpResponse
+from page.models import Page
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 # Create your views here.
 
 def user_register(request):
 	registered = False
+	page = ''
+	try:
+		page = Page.objects.get(ptype = 'register')
+	except:
+		raise Http404
 	if request.method == 'POST':
 		user_form = UserForm(data = request.POST)
 		member_form = MemberForm(data = request.POST)
@@ -27,13 +33,13 @@ def user_register(request):
 			return HttpResponseRedirect('/')
 
 		else:
-			pass
+			return render_to_response('register.html',{'user_form':user_form, 'member_form':member_form, 'registered':registered, 'page':page },context_instance=RequestContext(request))
 
 	else :
 		user_form = UserForm()
 		member_form = MemberForm()
 
-	return render_to_response('register.html',{'user_form':user_form, 'member_form':member_form, 'registered':registered },context_instance=RequestContext(request))
+	return render_to_response('register.html',{'user_form':user_form, 'member_form':member_form, 'registered':registered,'page':page },context_instance=RequestContext(request))
 
 
 
@@ -41,6 +47,11 @@ def user_register(request):
 def user_profile(request):
 	success = False
 	user = User.objects.get(pk = request.user.id)
+	page = ''
+	try:
+		page = Page.objects.get(ptype = 'register')
+	except:
+		raise Http404
 	if request.method == 'POST':
 		member = Member.objects.get(user = user)
 		user.set_password(request.POST['password'])
@@ -51,10 +62,10 @@ def user_profile(request):
 		member.address = request.POST['address']
 		member.user = user
 		member.save()
-		return HttpResponseRedirect('/account/profile/')
 	else:
-		member = Member.objects.get(user = user)
-		return render_to_response('user_profile.html',{'user':user,'member':member}, context_instance=RequestContext(request))
+		print user.id
+		member = Member.objects.get(user__id = user.id)
+	return render_to_response('user_profile.html',{'user':user,'member':member,'page':page}, context_instance=RequestContext(request))
 
 
 
@@ -62,6 +73,11 @@ def user_profile(request):
 
 def user_login(request):
 	error = ''
+	page = ''
+	try:
+		page = Page.objects.get(ptype = 'register')
+	except:
+		raise Http404
 	if not request.user.is_authenticated():
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -76,9 +92,9 @@ def user_login(request):
 					return HttpResponse("You account is disabled")
 			else:
 				error = 'Invalid login details supplied'
-				return render_to_response('login.html', {'error':error},context_instance=RequestContext(request))
+				return render_to_response('login.html', {'error':error, 'page':page},context_instance=RequestContext(request))
 		else:
-			return render_to_response('login.html',context_instance=RequestContext(request))
+			return render_to_response('login.html',{'page':page},context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect('/account/profile/')
 

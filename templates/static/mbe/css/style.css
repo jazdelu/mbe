@@ -401,7 +401,7 @@ footer>ul>li>a:hover{
 }
 
 .product .panel{
-	min-height: 64px;
+	height: 160px;
 	padding: 0px;
 }
 .product .panel>.text>span{
@@ -427,12 +427,8 @@ footer>ul>li>a:hover{
 .product .cover{
 	position: relative;
 	margin-top: 20px;
-}
-.product .title{
-	position: absolute;
-	bottom: 0px;
-	left: 20px;
-	color:#fff;
+	max-height: 400px;
+	overflow: hidden;
 }
 /*----------wishlist-----------*/
 .tiles ul{

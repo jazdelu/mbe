@@ -8,6 +8,8 @@ PAGE_TYPE_CHOICES = [
 	('conditions','conditions'),
 	('contact','contact'),
 	('wishlist','wishlist'),
+	('login','login'),
+	('register','register'),
 ]
 SECTION_TYPE_CHOICES = [
 	('image','image'),
