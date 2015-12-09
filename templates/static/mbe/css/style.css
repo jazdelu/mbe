@@ -431,6 +431,24 @@ footer>ul>li>a:hover{
 	overflow: hidden;
 }
 /*----------wishlist-----------*/
+.wishlist h3{
+	text-align: center;
+	margin-bottom: 45px;
+	letter-spacing: 2px;
+}
+.wishlist .text{
+	overflow: hidden;
+	text-align: justify;
+	text-align-last:justify;
+	-moz-text-align-last:justify;
+}
+.wishlist .text:after{
+	display: inline-block;
+	content: '';
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+}
 .tiles ul{
 	position: relative;
 }
