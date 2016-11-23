@@ -548,9 +548,12 @@ footer>ul>li>a:hover{
 }
 
 .conditions p a{
-	display: inline-block;
+	display: inline;
 	color:#E2BF00;
 }
 .conditions p a:hover{
 	text-decoration: underline;
+}
+table{
+	width: 60%;
 }
