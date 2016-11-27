@@ -10,8 +10,18 @@ class MemberInline(admin.StackedInline):
 	can_delete = False
 	verbose_name_plural = 'member'
 
+
 class UserAdmin(UserAdmin):
-	list_display = ('id','username','email','email1','kidsname')
+	list_display = ('username','email','email1', 'kidsname')
+	def email1(self,obj):
+		return obj.member.email1
+	email1.short_description = "Friends' Email"
+
+	def kidsname(self,obj):
+		return obj.member.kidsname	
+	kidsname.short_description = "Kids' Names"
+
+	list_display = ('username','email','email1', 'kidsname')
 	inlines = (MemberInline,)
 
 admin.site.unregister(User)
