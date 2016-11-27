@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Member(models.Model):
 	user = models.OneToOneField(User, on_delete = models.CASCADE)
 	email1 = models.EmailField(blank = True, null = True, verbose_name = "Friend's email" )
-	kidsname = models.CharField(max_length = 128, verbose_name = 'Kids Name', blank = True, null = True)
+	kidsname = models.CharField(max_length = 128, verbose_name = "Kids' names", blank = True, null = True)
 	address = models.TextField(verbose_name = 'Address', blank = True, null = True)
 
 	class Meta:

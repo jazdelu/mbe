@@ -11,7 +11,7 @@ class MemberInline(admin.StackedInline):
 	verbose_name_plural = 'member'
 
 class UserAdmin(UserAdmin):
-	list_display = ('id','username','email')
+	list_display = ('id','username','email','email1','kidsname')
 	inlines = (MemberInline,)
 
 admin.site.unregister(User)
